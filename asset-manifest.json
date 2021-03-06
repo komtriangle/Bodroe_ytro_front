@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Bodroe_ytro_front/static/css/main.7a520b92.chunk.css",
+    "main.js": "/Bodroe_ytro_front/static/js/main.e12f3bed.chunk.js",
+    "main.js.map": "/Bodroe_ytro_front/static/js/main.e12f3bed.chunk.js.map",
+    "runtime-main.js": "/Bodroe_ytro_front/static/js/runtime-main.c09de577.js",
+    "runtime-main.js.map": "/Bodroe_ytro_front/static/js/runtime-main.c09de577.js.map",
+    "static/css/2.760e81b1.chunk.css": "/Bodroe_ytro_front/static/css/2.760e81b1.chunk.css",
+    "static/js/2.5aaf625e.chunk.js": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js",
+    "static/js/2.5aaf625e.chunk.js.map": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js.map",
+    "index.html": "/Bodroe_ytro_front/index.html",
+    "static/css/2.760e81b1.chunk.css.map": "/Bodroe_ytro_front/static/css/2.760e81b1.chunk.css.map",
+    "static/css/main.7a520b92.chunk.css.map": "/Bodroe_ytro_front/static/css/main.7a520b92.chunk.css.map",
+    "static/js/2.5aaf625e.chunk.js.LICENSE.txt": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c09de577.js",
+    "static/css/2.760e81b1.chunk.css",
+    "static/js/2.5aaf625e.chunk.js",
+    "static/css/main.7a520b92.chunk.css",
+    "static/js/main.e12f3bed.chunk.js"
+  ]
+}

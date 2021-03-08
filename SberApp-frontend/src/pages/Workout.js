@@ -71,16 +71,19 @@ const Workout = ({
   iterChanged,
   assistant,
   iter,
-  setIter
+  setIter,
+  setGroupId
 }) => {
   const history = useHistory();
 
 
-  const fetchCategoriesAndSetCategories = async () => {
-    const workoutsEx = await ApiQueries.getExircicesfromGroup(groupId);
-    setWorkoutExercises(workoutsEx.data);
-  };
+ 
   useEffect(() => {
+    const fetchCategoriesAndSetCategories = async () => {
+      const workoutsEx = await ApiQueries.getExircicesfromGroup(groupId);
+      setWorkoutExercises(workoutsEx.data);
+    };
+
     fetchCategoriesAndSetCategories();
     console.log("Workout useeffect");
   }, []);
@@ -99,17 +102,28 @@ const Workout = ({
    }
   },[iter])
   useEffect(() => { 
+    if (iter + 1 == workoutExercises.length) {
+      const getUserAchieves = async () => {
+        await ApiQueries.createProgressAchieve(
+          userId,
+          new Date(),
+          true
+        );
+        var ach = await ApiQueries.getAchiviesFomUser(
+          userId
+        );
+        setAchieves(ach.data);
+      };
+      getUserAchieves();
+    }
     if (iterChanged == 1) { 
-      setIter(iter + 1); 
+        setIter(iter + 1); 
     } else if (iterChanged == 0) { 
-      setIter(iter - 1); 
+      if(iter>0){
+        setIter(iter - 1);
+      } 
     } 
   }, [iterChanged]);
-  // useEffect(() =>{
-  //  if(workoutExercises[0]!=undefined){
-  //   assistant.current?.sendData({ action: { action_id: 'ChangeExir', parameters: { "description":workoutExercises[0].discription, "number":iter } } });
-  //  }
-  // },[workOutStarted])
 
   const sayExircise = (title) => {
     assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":title, "number":iter } } });
@@ -231,6 +245,8 @@ const Workout = ({
                     <Button
                       onClick={() => {
                         setWorkOutStartet(false);
+                        setIter(0);
+                        setGroupId(1);
                         history.push("/");
                       }}
                     >
@@ -327,20 +343,7 @@ const Workout = ({
                               //if(workoutExercises[iter+1]!=undefined){
                                 //assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":workoutExercises[iter+1].discription, "number":iter } } });
                              // }
-                              if (iter + 1 == workoutExercises.length) {
-                                const getUserAchieves = async () => {
-                                  await ApiQueries.createProgressAchieve(
-                                    userId,
-                                    new Date(),
-                                    true
-                                  );
-                                  var ach = await ApiQueries.getAchiviesFomUser(
-                                    userId
-                                  );
-                                  setAchieves(ach.data);
-                                };
-                                getUserAchieves();
-                              }
+                              
 
                               setIter(iter + 1);
                             }}

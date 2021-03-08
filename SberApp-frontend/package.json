@@ -2,6 +2,7 @@
   "name": "sberapp-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://komtriangle.github.io/Bodroe_ytro_front/",
   "dependencies": {
     "@diez/prefabs": "^10.6.0",
     "@sberdevices/assistant-client": "^2.9.2",
@@ -29,12 +30,12 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

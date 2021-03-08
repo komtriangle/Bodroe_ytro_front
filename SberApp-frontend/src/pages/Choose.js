@@ -26,11 +26,12 @@ const Choose = ({
   workouts,
   SendDataToAssistant
 }) => {
-  const fetchCategoriesAndSetCategories = async () => {
-    const workouts = await ApiQueries.getAllGroupsExercises();
-    setWorkouts(workouts);
-  };
+ 
   useEffect(() => {
+    const fetchCategoriesAndSetCategories = async () => {
+      const workout = await ApiQueries.getAllGroupsExercises();
+      workouts.current =workout;
+    };
     fetchCategoriesAndSetCategories();
   }, []);
 
@@ -41,8 +42,8 @@ const Choose = ({
       </div>
       <br />
       <Row>
-        {workouts.data ? (
-          workouts.data.map(({ name, short_discription, discription }, i) => (
+        {workouts.current.data ? (
+          workouts.current.data.map(({ name, short_discription, discription }, i) => (
             <>
               <Col type="calc" size={1}>
                 <Card

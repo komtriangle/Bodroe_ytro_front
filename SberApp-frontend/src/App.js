@@ -59,7 +59,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTUwMDk0MDcsImV4cCI6MTYxNTA5NTgwNywidHlwZSI6IkJlYXJlciIsImp0aSI6IjdlYjQ4N2M5LWFmNjctNDlmNS04ZjYzLTY5MDc5ODQyZjY0NCIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.h8aFrJA2AKT-l8bI_lTtctd-xeZJ2TYHcB0tSfYAopJ369N03ezTXjFtmCbtDwD3pCvxHALJ20myibUjcl_KBVVQRq4gSi6GLqmZk_--GZKXC4jdhwpoLOYByCE3V98yu_sxRpG8i0ylAYOZD70me0gHl_ngvaiEzosrp5WjX1Uzgkij8LSdGTEpkmWVM8UZ7oclmOIONBcemqVv9n6c_Tt-H2QEM3E9FuQW6ezwXH7gBRsJH1IxuhroQ5zYbplLzBrjyUmY_q0kfHIUe1imTxowxtbg1QdRchb3N_5oav2P4sCyr8FOMjC8xCRn0iLtDejwDR8b9ozhKyqaXRA_0wrg41RzAUfZXC4bBLppUdN0knHwIQl513FhTvNbxYcrTrLRfwUxFdAPN1GRaeljrIBbT-v6kwieoYqcAJKba9b5tsi-ZTV-oN8JCiXLV1BJWa0Fxx6u94wsAC_JbDy6K663MS5qOelrwDJ3N1jsLAjTwi7xmlbMNyA5XBsIxo4HZoXoqPdjG37QqhTDYB03zrLM0MTAzdgJY0BYzNeU9m17_SW1byfqHs81LfoeyNg5k_5yMYyWsye_yR1uJ5Xg_lCBnHZBeVwzArXzYpsey6FcEsEuEMVPwPxbUreL8ierjbo-CuLbE8q94ReiyV5fYQoGkTAme6xx-24X67UExz0" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTUxODYxMDYsImV4cCI6MTYxNTI3MjUwNiwidHlwZSI6IkJlYXJlciIsImp0aSI6ImVjOWM0NzY0LWZjNTUtNGMzOS05ZDE4LWJjYTFhYTg4N2QxZCIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.C_D9jvjqbX9Y2UNycRmnxfRjJULiHJm7qq3bPm5T6iREwX5671QmJFIAnL9nbYmPWZHaQ7BW6h5Wqo9nj9sbNR26J5wh16Sp1rm-SvRsInnV-MVpywrJI8Sr718osHHnZoW_GJm1gglE2a9p42YQ06joC2iIqRUZ3Gexi_NfjLSdtK2uKpTjaZWM0lu3xtIhSBNtxrgAWch9KHyp2WqqG0-Lw5Ccih9fw0HPj2QBpVTmMZfIiXBK_1dg9IxJzbf9KS1_QCBvbz_sqAevlXH4KR8u2akXarz_rfAjwdVheW7hyj13H5i9KMEmZ4q2A0f3wuky6jv73YgXhhYRlKSYGtViDO-uVREbO-Nd5EBK8D2lqcoGXHasJs6e6bomG3iks0e7F2Zg3UNugYC2Bbl_fxFHa7uQJN4THQpd3pIXVBwKHtqOdozwJn5IbgHgCO0_Em8v8ju5Q4SaGEgNZj8ZzE4WqK13dSgQBbrvmZihptiyVXNk4dSvvDP-7EZh3hI_mRvYpwcRPf8oCT2-xyEdHeA0E1KWrir0jWBsO0MKSEl3FkBSagyOC7Ewgbs4574L9ZojZcZXw5TNkkyabtx8em9Vve1l_rc_H6Pc_E2y365-8h6V8fQMhz-Lg0gkdbqKpL2_a_YtO6qZ2IAxOg8XrwVbAq_6A0NQ0lwExa5lVRI" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -73,10 +73,11 @@ function App() {
 
   
   var assistant = useRef();
+  var workouts = useRef();
   var state = {
     notes: [],
   };
-  const [workouts, setWorkouts] = useState([]);
+  //const [workouts, setWorkouts] = useState([]);
 
   const [workoutExercises, setWorkoutExercises] = useState([]);
   const [iter, setIter] = useState(0);
@@ -125,12 +126,12 @@ function App() {
   };
 
   const history = useHistory();
-  const ChooseTrain = async (train_name) => {
+  const ChooseTrain =  (train_name) => {
     train_name =
       train_name.charAt(0).toUpperCase() + train_name.slice(1).trim();
-    console.log("WK", workouts.data);
-    if (workouts.data != undefined) {
-      workouts.data.map(({ _id, name, discription }, i) => {
+    console.log("WK", workouts.current);
+    if (workouts.current.data != undefined) {
+      workouts.current.data.map(({ _id, name, discription }, i) => {
         console.log("name", name);
         console.log("train_name", train_name);
         if (train_name == name.trim()) {
@@ -188,7 +189,6 @@ function App() {
         case "start_train":
           startTraining();
           break;
-
         case "next_exircise":
           changeExir("next");
           break;
@@ -205,46 +205,52 @@ function App() {
     }
   };
   const [achieves, setAchieves] = useState([]);
+  
   useEffect(() => {
-    if (assistant.current == undefined) {
       assistant.current = initializeAssistant(() => getStateForAssistant());
       assistant.current.on("start", (event) => {
         console.log(`assistant.on(start)`, event);
       });
-    }
 
-    assistant.current.on(
-      "data",
-      (event /*: any*/) => {
-        if (event.type == "smart_app_data") {
-          console.log("userId", event.user_id);
-          if (event.user_id != undefined) {
-            setUserId(event.user_id);
-            getData(event.user_id);
-            ApiQueries.createUser(userId);
+      assistant.current.on(
+        "data",
+        (event /*: any*/) => {
+          if (event.type == "smart_app_data") {
+            console.log("userId", event.user_id);
+            if (event.user_id != undefined) {
+              setUserId(event.user_id);
+              getData(event.user_id);
+              ApiQueries.createUser(userId);
+            }
+            const getUserAchieves = async () => {
+              var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
+              setAchieves(ach.data);
+            };
+            getUserAchieves();
           }
-          const getUserAchieves = async () => {
-            var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
-            setAchieves(ach.data);
-          };
-          getUserAchieves();
-        }
-        console.log(`assistant.on(data)`, event);
-        const { action } = event;
-        dispatchAssistantAction(action);
-      },
-      []
-    );
+          console.log(`assistant.on(data)`, event);
+          const { action } = event;
+          dispatchAssistantAction(action);
+        },
+        []
+      );
 
-    //assistant.sendData({ action: { action_id: 'done', parameters: { title: 'купить хлеб' } } });
 
     if (assistant.current != null) {
       console.log("Non null, send data");
-      //assistant.sendData({ action: { action_id: 'check_answer'}});
     } else {
       console.log("Null");
     }
-  }, [workouts]);
+  }, []);
+
+  useEffect(() =>{
+    const fetchCategoriesAndSetCategories = async () => {
+      const workout = await ApiQueries.getAllGroupsExercises();
+      workouts.current =workout;
+    };
+    fetchCategoriesAndSetCategories();
+  },[workouts])
+
   const [groupId, setGroupId] = useState(2);
   const [description, setDescription] = useState(
     "Облегченный вид утренней тренирровки позволит вам размять тело без особых силовых усилий"
@@ -286,7 +292,6 @@ function App() {
             setDescription={setDescription}
             setName={setName}
             workouts={workouts}
-            setWorkouts={setWorkouts}
             SendDataToAssistant={SendDataToAssistant}
           />
         </Route>
@@ -305,6 +310,7 @@ function App() {
             assistant={assistant}
             iter={iter}
             setIter={setIter}
+            setGroupId={setGroupId}
 
           />
         </Route>

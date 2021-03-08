@@ -217,7 +217,12 @@ function App() {
         (event /*: any*/) => {
           if (event.type == "smart_app_data") {
             console.log("userId", event.user_id);
-            if (event.user_id != undefined) {
+            if (event.sub != undefined) {
+              setUserId(event.sub);
+              getData(event.sub);
+              ApiQueries.createUser(userId);
+            }
+            else  if (event.user_id != undefined) {
               setUserId(event.user_id);
               getData(event.user_id);
               ApiQueries.createUser(userId);

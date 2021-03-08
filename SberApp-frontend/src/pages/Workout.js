@@ -343,7 +343,20 @@ const Workout = ({
                               //if(workoutExercises[iter+1]!=undefined){
                                 //assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":workoutExercises[iter+1].discription, "number":iter } } });
                              // }
-                              
+                             if (iter + 1 == workoutExercises.length) {
+                              const getUserAchieves = async () => {
+                                await ApiQueries.createProgressAchieve(
+                                  userId,
+                                  new Date(),
+                                  true
+                                );
+                                var ach = await ApiQueries.getAchiviesFomUser(
+                                  userId
+                                );
+                                setAchieves(ach.data);
+                              };
+                              getUserAchieves();
+                            }
 
                               setIter(iter + 1);
                             }}

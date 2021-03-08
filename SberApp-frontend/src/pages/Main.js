@@ -40,7 +40,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves }) => {
       <Card style={{ width: "20rem" }}>
         <CardContent compact>
           <Cell
-            content={<TextBoxBiggerTitle>Начни день с...</TextBoxBiggerTitle>}
+            content={<TextBoxBiggerTitle>Начни день с</TextBoxBiggerTitle>}
             right={<span style={{ marginTop: 5 }}></span>}
           />
           <Link

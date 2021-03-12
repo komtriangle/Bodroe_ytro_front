@@ -28,7 +28,7 @@ import {
   IconSettings,
 } from "@sberdevices/ui";
 import { tertiary, primary, accent } from "@sberdevices/plasma-tokens";
-const Main = ({ setGroupId, ToChooseCateg, achieves }) => {
+const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) => {
   return (
     <div
       style={{
@@ -52,6 +52,8 @@ const Main = ({ setGroupId, ToChooseCateg, achieves }) => {
             <Cell
               onClick={() => {
                 setGroupId(2);
+                setDescription("Облегченный вид утренней тренировки. Позволит размять тело без сильных нагрузок на организм.");
+                setName("Быстрая тренировка");
               }}
               left={
                 <CellIcon>

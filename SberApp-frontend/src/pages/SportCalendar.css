@@ -1,8 +1,15 @@
 .nice-dates-day {
   color: var(--plasma-colors-text) !important;
-  font-size: large !important;
+  font-size: x-large !important;
 }
-
+.nice-dates-week-header_day {
+  font-size: x-large !important;
+  color: var(--plasma-colors-text) !important;
+  font-weight: bold;
+}
+.nice-dates-day_month {
+  font-size: small !important;
+}
 .nice-dates-popover {
   box-shadow: none;
   border: 1px solid #ddd;
@@ -12,7 +19,8 @@
 }
 .nice-dates-navigation_current {
   color: var(--plasma-colors-text) !important;
-  font-size: large !important;
+  font-size: x-large !important;
+  font-weight: bolder;
 }
 .nice-dates-day {
   height: 60px !important;

@@ -246,8 +246,8 @@ const Workout = ({
                     <Button
                       onClick={() => {
                         setWorkOutStartet(false);
-                        setIter(0);
-                        setGroupId(1);
+                        setIter(-1);
+                        setGroupId(2);
                         history.push("/");
                       }}
                     >

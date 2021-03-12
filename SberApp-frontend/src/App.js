@@ -71,7 +71,6 @@ const initializeAssistant = (getState /*: any*/) => {
 function App() {
   const [character, setCharacter] = useState("sber");
 
-  
   var assistant = useRef();
   var workouts = useRef();
   var state = {
@@ -85,7 +84,7 @@ function App() {
   const [workOutStarted, setWorkOutStartet] = useState(false);
   const [iterChanged, setIterChanged] = useState(-1);
   const [digit, setDigit] = useState(-1);
-  const [assistantType, setAssistantType]= useState("")
+  const [assistantType, setAssistantType] = useState("");
   const getStateForAssistant = () => {
     console.log("getStateForAssistant: this.state:", state);
     const state_ = {
@@ -127,7 +126,7 @@ function App() {
   };
 
   const history = useHistory();
-  const ChooseTrain =  (train_name) => {
+  const ChooseTrain = (train_name) => {
     train_name =
       train_name.charAt(0).toUpperCase() + train_name.slice(1).trim();
     console.log("WK", workouts.current);
@@ -149,21 +148,20 @@ function App() {
   };
 
   const startTraining = async () => {
-    setIter(0)
+    setIter(0);
     setWorkOutStartet(true);
-    
-   };
-  const changeExir = async (type) => { 
-    switch (type) { 
-      case "next": 
-        setIterChanged(1); 
-        break; 
-      case "previous": 
-        setIterChanged(0); 
-        break; 
-    } 
- 
-    setIterChanged(-1); 
+  };
+  const changeExir = async (type) => {
+    switch (type) {
+      case "next":
+        setIterChanged(1);
+        break;
+      case "previous":
+        setIterChanged(0);
+        break;
+    }
+
+    setIterChanged(-1);
   };
 
   const dispatchAssistantAction = async (action) => {
@@ -178,7 +176,7 @@ function App() {
           ChangePage("Calendar");
           break;
         case "to_fast_training":
-          setGroupId(0);
+          setGroupId(2)
           ChangePage("fast_training");
           break;
         case "to_choose_training":
@@ -206,44 +204,42 @@ function App() {
     }
   };
   const [achieves, setAchieves] = useState([]);
-  
+
   useEffect(() => {
-      assistant.current = initializeAssistant(() => getStateForAssistant());
-      assistant.current.on("start", (event) => {
-        console.log(`assistant.on(start)`, event);
-      });
+    assistant.current = initializeAssistant(() => getStateForAssistant());
+    assistant.current.on("start", (event) => {
+      console.log(`assistant.on(start)`, event);
+    });
 
-      assistant.current.on(
-        "data",
-        (event /*: any*/) => {
-          if (event.type == "smart_app_data") {
-            console.log("userId", event.user_id);
-            if (event.sub != undefined) {
-              setUserId(event.sub);
-              getData(event.sub);
-              ApiQueries.createUser(userId);
-            }
-            else  if (event.user_id != undefined) {
-              setUserId(event.user_id);
-              getData(event.user_id);
-              ApiQueries.createUser(userId);
-            }
-            const getUserAchieves = async () => {
-              var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
-              setAchieves(ach.data);
-            };
-            getUserAchieves();
+    assistant.current.on(
+      "data",
+      (event /*: any*/) => {
+        if (event.type == "smart_app_data") {
+          console.log("userId", event.user_id);
+          if (event.sub != undefined) {
+            setUserId(event.sub);
+            getData(event.sub);
+            ApiQueries.createUser(userId);
+          } else if (event.user_id != undefined) {
+            setUserId(event.user_id);
+            getData(event.user_id);
+            ApiQueries.createUser(userId);
           }
-          if(event.type=="character"){
-            setAssistantType(event.character.id)
-          }
-          console.log(`assistant.on(data)`, event);
-          const { action } = event;
-          dispatchAssistantAction(action);
-        },
-        []
-      );
-
+          const getUserAchieves = async () => {
+            var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
+            setAchieves(ach.data);
+          };
+          getUserAchieves();
+        }
+        if (event.type == "character") {
+          setAssistantType(event.character.id);
+        }
+        console.log(`assistant.on(data)`, event);
+        const { action } = event;
+        dispatchAssistantAction(action);
+      },
+      []
+    );
 
     if (assistant.current != null) {
       console.log("Non null, send data");
@@ -252,13 +248,13 @@ function App() {
     }
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     const fetchCategoriesAndSetCategories = async () => {
       const workout = await ApiQueries.getAllGroupsExercises();
-      workouts.current =workout;
+      workouts.current = workout;
     };
     fetchCategoriesAndSetCategories();
-  },[workouts])
+  }, [workouts]);
 
   const [groupId, setGroupId] = useState(2);
   const [description, setDescription] = useState(
@@ -268,12 +264,12 @@ function App() {
 
   const SendDataToAssistant = async (action) => {
     assistant.current.sendData({
-      action: { action_id: action, parameters: { } },
+      action: { action_id: action, parameters: {} },
     });
   };
   const TochooseCat = async (action) => {
     assistant.current.sendData({
-      action: { action_id: "chooseCategory", parameters: { } },
+      action: { action_id: "chooseCategory", parameters: {} },
     });
   };
 
@@ -293,52 +289,54 @@ function App() {
             return;
         }
       })()}
-      {/* {assistant.current ? ( */}
-      <Switch>
-        <Route path="/choose">
-          <Choose
-            setGroupId={setGroupId}
-            setDescription={setDescription}
-            setName={setName}
-            workouts={workouts}
-            SendDataToAssistant={SendDataToAssistant}
-          />
-        </Route>
-        <Route path="/fastworkout">
-          <Workout
-            groupId={groupId}
-            description={description}
-            workoutExercises={workoutExercises}
-            setWorkoutExercises={setWorkoutExercises}
-            name={name}
-            userId={userId}
-            workOutStarted={workOutStarted}
-            setWorkOutStartet={setWorkOutStartet}
-            iterChanged={iterChanged}
-            setAchieves={setAchieves}
-            assistant={assistant}
-            iter={iter}
-            setIter={setIter}
-            setGroupId={setGroupId}
-            assistantType={assistantType}
-          />
-        </Route>
-        <Route path="/calendar" exact>
-          <SportCalendar userId={userId} digit={digit} />
-        </Route>
-        <Route path="/">
-          <Main
-            setGroupId={setGroupId}
-            ToChooseCateg={TochooseCat}
-            achieves={achieves}
-          />
-        </Route>
-      </Switch>
-      {/* ) : (
+      {assistant.current ? (
+        <Switch>
+          <Route path="/choose">
+            <Choose
+              setGroupId={setGroupId}
+              setDescription={setDescription}
+              setName={setName}
+              workouts={workouts}
+              SendDataToAssistant={SendDataToAssistant}
+            />
+          </Route>
+          <Route path="/fastworkout">
+            <Workout
+              groupId={groupId}
+              description={description}
+              workoutExercises={workoutExercises}
+              setWorkoutExercises={setWorkoutExercises}
+              name={name}
+              userId={userId}
+              workOutStarted={workOutStarted}
+              setWorkOutStartet={setWorkOutStartet}
+              iterChanged={iterChanged}
+              setAchieves={setAchieves}
+              assistant={assistant}
+              iter={iter}
+              setIter={setIter}
+              setGroupId={setGroupId}
+              assistantType={assistantType}
+            />
+          </Route>
+          <Route path="/calendar" exact>
+            <SportCalendar userId={userId} digit={digit} />
+          </Route>
+          <Route path="/">
+            <Main
+              setGroupId={setGroupId}
+              ToChooseCateg={TochooseCat}
+              achieves={achieves}
+              setName={setName}
+              setDescription={setDescription}
+            />
+          </Route>
+        </Switch>
+      ) : (
         <Container>
           <Spinner />
         </Container>
-      )} */}
+      )}
     </AppStyled>
   );
 }

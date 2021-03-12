@@ -59,7 +59,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTUxODYxMDYsImV4cCI6MTYxNTI3MjUwNiwidHlwZSI6IkJlYXJlciIsImp0aSI6ImVjOWM0NzY0LWZjNTUtNGMzOS05ZDE4LWJjYTFhYTg4N2QxZCIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.C_D9jvjqbX9Y2UNycRmnxfRjJULiHJm7qq3bPm5T6iREwX5671QmJFIAnL9nbYmPWZHaQ7BW6h5Wqo9nj9sbNR26J5wh16Sp1rm-SvRsInnV-MVpywrJI8Sr718osHHnZoW_GJm1gglE2a9p42YQ06joC2iIqRUZ3Gexi_NfjLSdtK2uKpTjaZWM0lu3xtIhSBNtxrgAWch9KHyp2WqqG0-Lw5Ccih9fw0HPj2QBpVTmMZfIiXBK_1dg9IxJzbf9KS1_QCBvbz_sqAevlXH4KR8u2akXarz_rfAjwdVheW7hyj13H5i9KMEmZ4q2A0f3wuky6jv73YgXhhYRlKSYGtViDO-uVREbO-Nd5EBK8D2lqcoGXHasJs6e6bomG3iks0e7F2Zg3UNugYC2Bbl_fxFHa7uQJN4THQpd3pIXVBwKHtqOdozwJn5IbgHgCO0_Em8v8ju5Q4SaGEgNZj8ZzE4WqK13dSgQBbrvmZihptiyVXNk4dSvvDP-7EZh3hI_mRvYpwcRPf8oCT2-xyEdHeA0E1KWrir0jWBsO0MKSEl3FkBSagyOC7Ewgbs4574L9ZojZcZXw5TNkkyabtx8em9Vve1l_rc_H6Pc_E2y365-8h6V8fQMhz-Lg0gkdbqKpL2_a_YtO6qZ2IAxOg8XrwVbAq_6A0NQ0lwExa5lVRI" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU1NDYyNDEsImV4cCI6MTYxNTYzMjY0MSwidHlwZSI6IkJlYXJlciIsImp0aSI6ImRlMGZkNTM1LTYxYTQtNDExMS04MTcwLWQyYzE5NWQwOWQ2NCIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.Cq_dPzl1bQmXkRLs-NkRwDrf2v73N-CFBPct9NuCdoEmYu1pqsfi9bE4kh7MUl4a6zsvKLyHthmLDu2yXeVn8L9RoCkQ2s4cWpdwT2ZcqNp4p9ZySHxwyZz7_NxhKCBrrl8JxIqEAS2AujeDU3gArjSrlrOSw9ySDLCKqAyJBV8vDPxE2RlLkcF91mJ4Owuoj5G6Y6Ngov87s51Puuo7TR7v15tUt6jdRMX_FwNAX8GY1sCEdW4RaIkNv-RA6h6em_p89Q67WJFu-LmF55zMirPlb9RYT4N5oVcEZgu_N__PtkmFIxY0jGU7XhAAKMXFoG4LkgOYOzytvgc6gBgwpWs-rwVFJXDhHJs2gcsrAFjXQOTR_NcdOezDKykFm6F4UDVEjKzWf4rT-v3mciFcTUX3_qtVOaloMZ8hWEDo_AyVLdTlzyc19oGyOpUJjSCvlwvud845Ah4i9QmaoM_96VBATPWuQ6l1oZZrkc0Bw_ORCtMxm0iLaRlmY2m06M39mn5-aiKpjN5SMig8-xQWGGs5UsQOztCYxPBGXzST1vN9yRvROx4QV_2TAI5VDWqzIcIPKBrXeNZwB-Mk2WKSWs3ccRcy2A6zX0OKKt2K7alQncErJvAFL1y73bmLkJRDOdp52WQWkmSquV5Lb9mJ6xbh5KdZIg4Zw9d7gLkK75k" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -80,11 +80,12 @@ function App() {
   //const [workouts, setWorkouts] = useState([]);
 
   const [workoutExercises, setWorkoutExercises] = useState([]);
-  const [iter, setIter] = useState(0);
+  const [iter, setIter] = useState(-1);
   const [userId, setUserId] = useState([]);
   const [workOutStarted, setWorkOutStartet] = useState(false);
   const [iterChanged, setIterChanged] = useState(-1);
   const [digit, setDigit] = useState(-1);
+  const [assistantType, setAssistantType]= useState("")
   const getStateForAssistant = () => {
     console.log("getStateForAssistant: this.state:", state);
     const state_ = {
@@ -148,10 +149,10 @@ function App() {
   };
 
   const startTraining = async () => {
+    setIter(0)
     setWorkOutStartet(true);
-   // assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":title, "number":iter } } });
-    //history.push("/fastworkout");
-  };
+    
+   };
   const changeExir = async (type) => { 
     switch (type) { 
       case "next": 
@@ -233,6 +234,9 @@ function App() {
             };
             getUserAchieves();
           }
+          if(event.type=="character"){
+            setAssistantType(event.character.id)
+          }
           console.log(`assistant.on(data)`, event);
           const { action } = event;
           dispatchAssistantAction(action);
@@ -258,7 +262,7 @@ function App() {
 
   const [groupId, setGroupId] = useState(2);
   const [description, setDescription] = useState(
-    "Облегченный вид утренней тренирровки позволит вам размять тело без особых силовых усилий"
+    "Облегченный вид утренней тренировки. Позволит размять тело без сильных нагрузок на организм."
   );
   const [name, setName] = useState("Быстрая тренировка");
 
@@ -316,7 +320,7 @@ function App() {
             iter={iter}
             setIter={setIter}
             setGroupId={setGroupId}
-
+            assistantType={assistantType}
           />
         </Route>
         <Route path="/calendar" exact>

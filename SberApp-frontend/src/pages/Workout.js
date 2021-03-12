@@ -72,7 +72,8 @@ const Workout = ({
   assistant,
   iter,
   setIter,
-  setGroupId
+  setGroupId,
+  assistantType
 }) => {
   const history = useHistory();
 
@@ -98,7 +99,7 @@ const Workout = ({
 
   useEffect(() =>{
    if(workoutExercises[iter]!=undefined){
-    sayExircise(workoutExercises[iter].discription)
+    sayExircise(workoutExercises[iter].discription, workoutExercises[iter].discriptionJoy)
    }
   },[iter])
   useEffect(() => { 
@@ -125,8 +126,8 @@ const Workout = ({
     } 
   }, [iterChanged]);
 
-  const sayExircise = (title) => {
-    assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":title, "number":iter } } });
+  const sayExircise = (off_title, title) => {
+    assistant.current?.sendData({ action: { action_id: 'say', parameters: { "off_description":off_title,"description":title, "number":iter } } });
   };
   const [timeCount, tsetTimeCount] = useState();
   return !workOutStarted ? (
@@ -170,11 +171,11 @@ const Workout = ({
                 <Button
                  
                   onClick={() => {
-                    if(workoutExercises[0].discription!=undefined){
-                      sayExircise(workoutExercises[0].discription)
-                    }
+                    if(workoutExercises[0].discriptionJoy!=undefined && workoutExercises[0].discription!=undefined){
+                      sayExircise(workoutExercises[0].discription, workoutExercises[0].discriptionJoy)
                     setWorkOutStartet(true);
-                  }}
+                    setIter(iter+1)
+                  }}}
                 >
                   Начать
                 </Button>

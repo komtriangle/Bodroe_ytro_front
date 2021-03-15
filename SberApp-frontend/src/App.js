@@ -289,7 +289,7 @@ function App() {
             return;
         }
       })()}
-      {assistant.current ? (
+      {true ? (
         <Switch>
           <Route path="/choose">
             <Choose

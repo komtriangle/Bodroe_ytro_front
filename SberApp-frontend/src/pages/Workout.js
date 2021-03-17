@@ -67,6 +67,7 @@ const Workout = ({
   userId,
   workOutStarted,
   setWorkOutStartet,
+  achieves,
   setAchieves,
   iterChanged,
   assistant,
@@ -111,10 +112,7 @@ const Workout = ({
           new Date(),
           true
         );
-        var ach = await ApiQueries.getAchiviesFomUser(
-          userId
-        );
-        setAchieves(ach.data);
+        setAchieves(achieves+1);
       };
       getUserAchieves();
     }
@@ -353,10 +351,7 @@ const Workout = ({
                                   new Date(),
                                   true
                                 );
-                                var ach = await ApiQueries.getAchiviesFomUser(
-                                  userId
-                                );
-                                setAchieves(ach.data);
+                                setAchieves(achieves+1);
                               };
                               getUserAchieves();
                             }

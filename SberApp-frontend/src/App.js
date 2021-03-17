@@ -312,6 +312,7 @@ function App() {
               userId={userId}
               workOutStarted={workOutStarted}
               setWorkOutStartet={setWorkOutStartet}
+              achieves={achieves}
               iterChanged={iterChanged}
               setAchieves={setAchieves}
               assistant={assistant}

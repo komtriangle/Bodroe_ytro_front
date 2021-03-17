@@ -59,7 +59,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU3OTUwMDQsImV4cCI6MTYxNTg4MTQwNCwidHlwZSI6IkJlYXJlciIsImp0aSI6ImU4Y2FiMmVlLWRmZDAtNDZlZS1hZWVkLWI5Zjc5ZTNjNzBiNCIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.PcW2HcnsxaoPw5ZE4KZWqk8ewIakqI_CxG6vnz7iSx9nO79TNSg_N9ABozncde7XxAPzGAUgMDhw2lrkKm2Lyz8PpTFsVyaDumiXKl5qNDSL_kIlbOuWIY0bknQFRj-r_dh92fcGkqm79CwZUTMLlagAKIgYIlAnmBjjWDjJ_eonlp8fqtrVeAyUHwiy-f9DT07Hc05HeddGwkIKonVW-K6YoAtEpjrYEA3_HRt9q8OsPdqkTFxvCr2q9yXUwEjIuVjsUE10tFGfCRApIuvSwxR6YaSKH2HcUFun_t4XyKtovCucdme0KxcNnP-6xWfLFL8w9CF_7p2SHhgCknQt89iH0yWRI6MMzSQBtCQ1lRRl4rRjXwbx2n3ILSTC6OF8QhxcSDT2F9mPYbWEJ3vHu20u5_f_sRF-tHE1NfmrbLlPLioW6mmcrL7oYgKIfFd3zBz-Sw9-AlSBr4kNuV_CKGURxQGcsLgQimkhFW29IqC_EKgbfZRzbGR_me-1XECA4sTTiU-qcfF88-bAWL976Tb19SLw7lgqmi30v1Ov3oXdKyhCjqprkbdDjtqlVg6qQMcX3EZkyZyvrm-cJ8CGRoTH0WnzNrl3p820Min9Y_5VT4zbIogi8QTl28-aw84cXZasLFJtD0j0cobMsHvGPMsSzS34FoPS20ITDMi2Lbw" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU5OTk3NDIsImV4cCI6MTYxNjA4NjE0MiwidHlwZSI6IkJlYXJlciIsImp0aSI6ImU2ZWJlMGM0LTFhZTItNDFmMi05NjExLTQ0NmFhODg4NGU5YSIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.O1OBIGlR3co2fVHBfPImWlU83urQXZqoTWZbN9RV8Qt8mUZGWy2XwjzZHk0bXI3xqIOlm4eTXdvgCGsErGAiCzzK9muoeOQ7kmMwPgYlVR4PVo0n3ZmWn2jCEUMiNwgAe41IEA6C_tHv5u8pLFs0oW0jg0FqNYMxZEhMj3pBo_gDqHg3XQu8B6fYFWi44XL0Ite9J8Gzz4uZ1aJFyaES_hpGhAWn9VtWxOspZ7Z729VHYhdGqe1O4SGFlY8bzvLIrH3HoKsqDYCIUZqhEB3s2U0O6aVlqfpKZJmkvN9gqhV_X_TaHWA2QJZ7ZseLirEA8csWXq8OOqknPQia8T85dB5VkAJanSxlsOP8KdwmROvGDcstcHAeWScpnMDoYuYrixefESMykN7XEuf4PSPMkjH3lqGZe0Ufp4i5FiOAD7frOTIyLQ71-wzm57h90vUMytO2uhr4ShPiwtZ3EkPHDuh2SP0J4Pw3_IhE7TjQ2DeYhXoXPU_lMiHtiU78DWRJ27pADkNQyVRJNCdkV3OewNtsYMh5gAkPzVbtjkyP8M5uci63dYrbgESJSDut_z5r8qRxJPSyyd3i5_65aOCer-EXUr-RYwPzt_ihyN8DF8YkJ6q0Y2nwUic2vB4T66pW1wFm6mvE-QbnFQq-fYX7Opa1XtdG4FJVMyNdoGbzQSc" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -195,9 +195,11 @@ function App() {
           changeExir("previous");
           break;
         case "to_main":
+          setWorkOutStartet(false);
+          setIter(-1);
+          setGroupId(2);
           history.push("/");
           break;
-
         default:
           break;
       }

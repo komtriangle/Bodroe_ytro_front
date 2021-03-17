@@ -105,14 +105,6 @@ export const Timer = ({
       timer = setTimeout(() => setCounterRest((c) => c - 1), 1000);
     } else if (counter === 0) {
       setIsOpen(false);
-      if (iter + 1 == workoutLength) {
-        const getUserAchieves = async () => {
-          await ApiQueries.createProgressAchieve(userId, new Date(), true);
-          var ach = await ApiQueries.getAchiviesFomUser(userId);
-          setAchieves(ach.data);
-        };
-        getUserAchieves();
-      }
       setIter(iter + 1);
       setCounter(timeCount);
     }

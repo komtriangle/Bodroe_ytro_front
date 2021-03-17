@@ -103,8 +103,7 @@ const Workout = ({
    }
   },[iter])
   useEffect(() => { 
-    if (iter + 1 == workoutExercises.length && workoutExercises.length!=0) {
-      alert("Achivies from useEffect")
+    if (iter == workoutExercises.length && workoutExercises.length!=0) {
       console.log("iter", iter, " len", workoutExercises.length)
       const getUserAchieves = async () => {
         await ApiQueries.createProgressAchieve(
@@ -347,20 +346,20 @@ const Workout = ({
                               //if(workoutExercises[iter+1]!=undefined){
                                 //assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":workoutExercises[iter+1].discription, "number":iter } } });
                              // }
-                            //  if (iter + 1 == workoutExercises.length) {
-                            //   const getUserAchieves = async () => {
-                            //     await ApiQueries.createProgressAchieve(
-                            //       userId,
-                            //       new Date(),
-                            //       true
-                            //     );
-                            //     var ach = await ApiQueries.getAchiviesFomUser(
-                            //       userId
-                            //     );
-                            //     setAchieves(ach.data);
-                            //   };
-                            //   getUserAchieves();
-                            // }
+                             if (iter+1 == workoutExercises.length) {
+                              const getUserAchieves = async () => {
+                                await ApiQueries.createProgressAchieve(
+                                  userId,
+                                  new Date(),
+                                  true
+                                );
+                                var ach = await ApiQueries.getAchiviesFomUser(
+                                  userId
+                                );
+                                setAchieves(ach.data);
+                              };
+                              getUserAchieves();
+                            }
 
                               setIter(iter + 1);
                             }}

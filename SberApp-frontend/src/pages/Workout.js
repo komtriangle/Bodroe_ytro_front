@@ -104,7 +104,7 @@ const Workout = ({
    }
   },[iter])
   useEffect(() => { 
-    if (iter+1 == workoutExercises.length && workoutExercises.length!=0) {
+    if (iter== workoutExercises.length && workoutExercises.length!=0) {
       console.log("iter", iter, " len", workoutExercises.length)
       const getUserAchieves = async () => {
         await ApiQueries.createProgressAchieve(

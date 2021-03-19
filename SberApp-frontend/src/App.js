@@ -238,15 +238,11 @@ function App() {
             ApiQueries.createUser(userId);
           }
           if(event.assistant=="official"){
-            assistant.current.sendData({
-              action: { action_id: "after_choose_train", parameters: {} },
-            });
+            alert(event.assistant)
             assistantType.current="sber"
           }
           else{
-            assistant.current.sendData({
-              action: { action_id: "train_finish", parameters: {} },
-            });
+            alert(event.assistant)
             assistantType.current = "joy"
           }
           const getUserAchieves = async () => {

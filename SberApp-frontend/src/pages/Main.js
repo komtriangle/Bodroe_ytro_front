@@ -33,8 +33,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
     <div
       style={{
         display: "flex",
-        justifyContent: "space-around",
-        marginBottom: "2rem",
+        justifyContent: "space-around"
       }}
     >
       <Card style={{ width: "20rem" }}>

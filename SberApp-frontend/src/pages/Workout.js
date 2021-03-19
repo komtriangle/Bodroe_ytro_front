@@ -302,7 +302,7 @@ const Workout = ({
                         /> */}
 
                       <div style={{ flexDirection: "column" }}>
-                        <CardParagraph1 lines={5}>
+                        <CardParagraph1 lines={7}>
                          
                          { assistantType.current == "joy" ?  workoutExercises[iter].discriptionJoy :  workoutExercises[iter].discription}
                         </CardParagraph1>

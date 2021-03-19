@@ -48,7 +48,7 @@ const Choose = ({
             <>
               <Col type="calc" size={1}>
                 <Card
-                  style={{ width: "11rem", marginBottom: "1rem" }}
+                  style={{ width: "10rem", marginBottom: "1rem" }}
                   tabIndex={-1}
                   scaleOnFocus={true}
                 >

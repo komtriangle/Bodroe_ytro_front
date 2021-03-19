@@ -41,7 +41,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
         <CardContent compact>
           <Cell
             content={<TextBoxBiggerTitle>Утро начнётся с</TextBoxBiggerTitle>}
-            right={<span style={{ marginTop: 30 }}></span>}
+            right={<span style={{ marginTop: 5 }}></span>}
           />
           <Link
             to="/fastworkout"
@@ -112,7 +112,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
       </Card>
       <div style={{ flexDirection: "column" }}>
         <br /> <br />
-        <Headline3>Ваша статистика</Headline3>
+        <Headline3>Статистика</Headline3>
         <MarkedList>
           {/* <div
             style={{

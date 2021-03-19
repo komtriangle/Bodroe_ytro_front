@@ -147,7 +147,6 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
             <Badge text={achieves.count_train} size={"l"} view={"secondary"} />
           </MarkedItem>
         </MarkedList>
-        <br />
       </div>
     </div>
   );

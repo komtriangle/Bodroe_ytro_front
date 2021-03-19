@@ -37,7 +37,7 @@ const Choose = ({
   }, []);
 
   return (
-    <Container>
+    <div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         <Headline2>Выберите режим тренировки</Headline2>
       </div>
@@ -48,7 +48,7 @@ const Choose = ({
             <>
               <Col type="calc" size={1}>
                 <Card
-                  style={{ width: "10rem", marginBottom: "1rem" }}
+                  style={{ width: "10rem", margin: "0.4rem" }}
                   tabIndex={-1}
                   scaleOnFocus={true}
                 >
@@ -101,7 +101,7 @@ const Choose = ({
           <Spinner />
         )}
       </Row>
-    </Container>
+    </div>
   );
 };
 

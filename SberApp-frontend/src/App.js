@@ -244,7 +244,7 @@ function App() {
           }
           else{
             assistant.current.sendData({
-              action: { action_id: "after_choose_train", parameters: {} },
+              action: { action_id: "train_finish", parameters: {} },
             });
             setAssistantType("joy")
           }

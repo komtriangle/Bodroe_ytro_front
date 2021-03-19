@@ -238,11 +238,9 @@ function App() {
             ApiQueries.createUser(userId);
           }
           if(event.assistant=="official"){
-            alert(event.assistant)
             assistantType.current="sber"
           }
           if(event.assistant=="no_official"){
-            alert(event.assistant)
             assistantType.current = "joy"
           }
           const getUserAchieves = async () => {
@@ -255,7 +253,6 @@ function App() {
           assistantType.current = event.character.id
         }
         if(event.assistant!=undefined){
-          alert(event.assistant)
           if(event.assistant == "official"){
             assistantType.current = "sber"
           }

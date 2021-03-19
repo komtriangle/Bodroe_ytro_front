@@ -130,6 +130,7 @@ function App() {
     train_name =
       train_name.charAt(0).toUpperCase() + train_name.slice(1).trim();
     console.log("WK", workouts.current);
+    let flag =true;
     if (workouts.current.data != undefined) {
       workouts.current.data.map(({ _id, name, discription }, i) => {
         console.log("name", name);
@@ -139,19 +140,21 @@ function App() {
           assistant.current.sendData({
             action: { action_id: "after_choose_train", parameters: {} },
           });
+          flag=false;
           console.log("i", i);
           console.log("name", name);
           setGroupId(i + 1);
           setName(name);
           setDescription(discription);
           history.push("/fastworkout");
-          return;
         }
 
       });
+     if(flag){
       assistant.current.sendData({
         action: { action_id: "bad_train_category", parameters: {} },
       });
+     }
     }
   };
 
@@ -312,6 +315,7 @@ function App() {
               setName={setName}
               workouts={workouts}
               SendDataToAssistant={SendDataToAssistant}
+              assistant={assistant}
             />
           </Route>
           <Route path="/fastworkout">

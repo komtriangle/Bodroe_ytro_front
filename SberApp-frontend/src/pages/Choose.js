@@ -24,7 +24,8 @@ const Choose = ({
   setName,
   setWorkouts,
   workouts,
-  SendDataToAssistant
+  SendDataToAssistant,
+  assistant
 }) => {
  
   useEffect(() => {
@@ -79,7 +80,9 @@ const Choose = ({
                           tabIndex={-1}
                           onClick={() => {
                             console.log(workouts.data);
-                            //SendDataToAssistant('chooseCategory')
+                            assistant.current.sendData({
+                              action: { action_id: "after_choose_train", parameters: {} },
+                            });
                             setGroupId(i + 1);
                             setDescription(discription);
                             setName(name);

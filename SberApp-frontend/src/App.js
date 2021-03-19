@@ -136,6 +136,9 @@ function App() {
         console.log("train_name", train_name);
         if (train_name == name.trim()) {
           //setWorkOutStartet(false)
+          assistant.current.sendData({
+            action: { action_id: "after_choose_train", parameters: {} },
+          });
           console.log("i", i);
           console.log("name", name);
           setGroupId(i + 1);
@@ -224,6 +227,12 @@ function App() {
             setUserId(event.user_id);
             getData(event.user_id);
             ApiQueries.createUser(userId);
+          }
+          if(event.assistant="official"){
+            setAssistantType("sber")
+          }
+          else{
+            setAssistantType("joy")
           }
           const getUserAchieves = async () => {
             var ach = await ApiQueries.getAchiviesFomUser(event.user_id);

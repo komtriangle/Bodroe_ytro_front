@@ -103,7 +103,7 @@ const Workout = ({
    }
   },[iter])
   useEffect(() => { 
-    if (iter + 1 == workoutExercises.length) {
+    if (iter + 1 == workoutExercises.length && iter!=-1) {
       const getUserAchieves = async () => {
         await ApiQueries.createProgressAchieve(
           userId,
@@ -116,6 +116,7 @@ const Workout = ({
         setAchieves(ach.data);
       };
       getUserAchieves();
+      assistant.current?.sendData({ action: { action_id: 'train_finish', parameters: {} } });
     }
     if (iterChanged == 1) { 
         setIter(iter + 1); 
@@ -358,6 +359,7 @@ const Workout = ({
                                 setAchieves(ach.data);
                               };
                               getUserAchieves();
+                              assistant.current?.sendData({ action: { action_id: 'train_finish', parameters: {} } });
                             }
 
                               setIter(iter + 1);

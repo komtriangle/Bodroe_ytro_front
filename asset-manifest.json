@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/Bodroe_ytro_front/static/css/main.f2f9a336.chunk.css",
-    "main.js": "/Bodroe_ytro_front/static/js/main.c18feb47.chunk.js",
-    "main.js.map": "/Bodroe_ytro_front/static/js/main.c18feb47.chunk.js.map",
+    "main.js": "/Bodroe_ytro_front/static/js/main.37993d61.chunk.js",
+    "main.js.map": "/Bodroe_ytro_front/static/js/main.37993d61.chunk.js.map",
     "runtime-main.js": "/Bodroe_ytro_front/static/js/runtime-main.c09de577.js",
     "runtime-main.js.map": "/Bodroe_ytro_front/static/js/runtime-main.c09de577.js.map",
     "static/css/2.760e81b1.chunk.css": "/Bodroe_ytro_front/static/css/2.760e81b1.chunk.css",
-    "static/js/2.5aaf625e.chunk.js": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js",
-    "static/js/2.5aaf625e.chunk.js.map": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js.map",
+    "static/js/2.29707187.chunk.js": "/Bodroe_ytro_front/static/js/2.29707187.chunk.js",
+    "static/js/2.29707187.chunk.js.map": "/Bodroe_ytro_front/static/js/2.29707187.chunk.js.map",
     "index.html": "/Bodroe_ytro_front/index.html",
     "static/css/2.760e81b1.chunk.css.map": "/Bodroe_ytro_front/static/css/2.760e81b1.chunk.css.map",
     "static/css/main.f2f9a336.chunk.css.map": "/Bodroe_ytro_front/static/css/main.f2f9a336.chunk.css.map",
-    "static/js/2.5aaf625e.chunk.js.LICENSE.txt": "/Bodroe_ytro_front/static/js/2.5aaf625e.chunk.js.LICENSE.txt"
+    "static/js/2.29707187.chunk.js.LICENSE.txt": "/Bodroe_ytro_front/static/js/2.29707187.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c09de577.js",
     "static/css/2.760e81b1.chunk.css",
-    "static/js/2.5aaf625e.chunk.js",
+    "static/js/2.29707187.chunk.js",
     "static/css/main.f2f9a336.chunk.css",
-    "static/js/main.c18feb47.chunk.js"
+    "static/js/main.37993d61.chunk.js"
   ]
 }

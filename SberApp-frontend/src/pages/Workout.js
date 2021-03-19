@@ -304,7 +304,7 @@ const Workout = ({
                       <div style={{ flexDirection: "column" }}>
                         <CardParagraph1 lines={5}>
                          
-                         { assistantType == "joy" ?  workoutExercises[iter].discriptionJoy :  workoutExercises[iter].discription}
+                         { assistantType.current == "joy" ?  workoutExercises[iter].discriptionJoy :  workoutExercises[iter].discription}
                         </CardParagraph1>
                         <div
                           style={{

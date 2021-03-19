@@ -73,6 +73,7 @@ function App() {
 
   var assistant = useRef();
   var workouts = useRef();
+  var assistantType = useRef();
   var state = {
     notes: [],
   };
@@ -84,7 +85,7 @@ function App() {
   const [workOutStarted, setWorkOutStartet] = useState(false);
   const [iterChanged, setIterChanged] = useState(-1);
   const [digit, setDigit] = useState(-1);
-  const [assistantType, setAssistantType] = useState("");
+  //const [assistantType, setAssistantType] = useState("");
   const getStateForAssistant = () => {
     console.log("getStateForAssistant: this.state:", state);
     const state_ = {
@@ -240,13 +241,13 @@ function App() {
             assistant.current.sendData({
               action: { action_id: "after_choose_train", parameters: {} },
             });
-            setAssistantType("sber")
+            assistantType.current="sber"
           }
           else{
             assistant.current.sendData({
               action: { action_id: "train_finish", parameters: {} },
             });
-            setAssistantType("joy")
+            assistantType.current = "joy"
           }
           const getUserAchieves = async () => {
             var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
@@ -255,15 +256,15 @@ function App() {
           getUserAchieves();
         }
         if (event.type == "character") {
-          setAssistantType(event.character.id);
+          assistantType.current = event.character.id
         }
         if(event.assistant!=undefined){
           alert(event.assistant)
           if(event.assistant == "official"){
-            setAssistantType("sber")
+            assistantType.current = "sber"
           }
           else{
-            setAssistantType("joy");
+            assistantType.current = "joy"
           }
         }
         console.log(`assistant.on(data)`, event);

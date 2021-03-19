@@ -237,9 +237,15 @@ function App() {
             ApiQueries.createUser(userId);
           }
           if(event.assistant=="official"){
+            assistant.current.sendData({
+              action: { action_id: "after_choose_train", parameters: {} },
+            });
             setAssistantType("sber")
           }
           else{
+            assistant.current.sendData({
+              action: { action_id: "after_choose_train", parameters: {} },
+            });
             setAssistantType("joy")
           }
           const getUserAchieves = async () => {
@@ -252,6 +258,7 @@ function App() {
           setAssistantType(event.character.id);
         }
         if(event.assistant!=undefined){
+          alert(event.assistant)
           if(event.assistant == "official"){
             setAssistantType("sber")
           }

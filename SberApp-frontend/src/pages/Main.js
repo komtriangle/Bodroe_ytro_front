@@ -112,7 +112,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
       </Card>
       <div style={{ flexDirection: "column" }}>
         <br /> <br />
-        <Headline3>Статистика:</Headline3>
+        <Headline3>Статистика</Headline3>
         <MarkedList>
           {/* <div
             style={{

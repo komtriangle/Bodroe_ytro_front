@@ -241,7 +241,7 @@ function App() {
             alert(event.assistant)
             assistantType.current="sber"
           }
-          else{
+          if(event.assistant=="no_official"){
             alert(event.assistant)
             assistantType.current = "joy"
           }

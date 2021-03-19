@@ -41,7 +41,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
         <CardContent compact>
           <Cell
             content={<TextBoxBiggerTitle>Утро начнётся с</TextBoxBiggerTitle>}
-            right={<span style={{ marginTop: 5 }}></span>}
+            right={<span style={{ marginTop: 30 }}></span>}
           />
           <Link
             to="/fastworkout"

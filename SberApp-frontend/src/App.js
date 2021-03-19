@@ -251,6 +251,14 @@ function App() {
         if (event.type == "character") {
           setAssistantType(event.character.id);
         }
+        if(event.assistant!=undefined){
+          if(event.assistant == "official"){
+            setAssistantType("sber")
+          }
+          else{
+            setAssistantType("joy");
+          }
+        }
         console.log(`assistant.on(data)`, event);
         const { action } = event;
         dispatchAssistantAction(action);

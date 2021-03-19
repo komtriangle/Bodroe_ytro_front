@@ -145,7 +145,12 @@ function App() {
           setName(name);
           setDescription(discription);
           history.push("/fastworkout");
+          return;
         }
+
+      });
+      assistant.current.sendData({
+        action: { action_id: "bad_train_category", parameters: {} },
       });
     }
   };

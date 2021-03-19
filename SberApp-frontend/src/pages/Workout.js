@@ -67,15 +67,13 @@ const Workout = ({
   userId,
   workOutStarted,
   setWorkOutStartet,
-  achieves,
   setAchieves,
   iterChanged,
   assistant,
   iter,
   setIter,
   setGroupId,
-  assistantType,
-  setIterChanged
+  assistantType
 }) => {
   const history = useHistory();
 
@@ -105,8 +103,7 @@ const Workout = ({
    }
   },[iter])
   useEffect(() => { 
-    if (iter== workoutExercises.length && workoutExercises.length!=0) {
-      console.log("iter", iter, " len", workoutExercises.length)
+    if (iter + 1 == workoutExercises.length) {
       const getUserAchieves = async () => {
         await ApiQueries.createProgressAchieve(
           userId,
@@ -119,7 +116,6 @@ const Workout = ({
         setAchieves(ach.data);
       };
       getUserAchieves();
-      assistant.current?.sendData({ action: { action_id: 'train_finish', parameters: {  } } });
     }
     if (iterChanged == 1) { 
         setIter(iter + 1); 
@@ -349,7 +345,22 @@ const Workout = ({
                               //if(workoutExercises[iter+1]!=undefined){
                                 //assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":workoutExercises[iter+1].discription, "number":iter } } });
                              // }
-                             setIterChanged(1);
+                             if (iter + 1 == workoutExercises.length) {
+                              const getUserAchieves = async () => {
+                                await ApiQueries.createProgressAchieve(
+                                  userId,
+                                  new Date(),
+                                  true
+                                );
+                                var ach = await ApiQueries.getAchiviesFomUser(
+                                  userId
+                                );
+                                setAchieves(ach.data);
+                              };
+                              getUserAchieves();
+                            }
+
+                              setIter(iter + 1);
                             }}
                           >
                             Следующее

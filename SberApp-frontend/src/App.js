@@ -195,11 +195,9 @@ function App() {
           changeExir("previous");
           break;
         case "to_main":
-          setWorkOutStartet(false);
-          setIter(-1);
-          setGroupId(2);
           history.push("/");
           break;
+
         default:
           break;
       }
@@ -312,9 +310,7 @@ function App() {
               userId={userId}
               workOutStarted={workOutStarted}
               setWorkOutStartet={setWorkOutStartet}
-              achieves={achieves}
               iterChanged={iterChanged}
-              setIterChanged={setIterChanged}
               setAchieves={setAchieves}
               assistant={assistant}
               iter={iter}

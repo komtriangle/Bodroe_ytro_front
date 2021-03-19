@@ -59,7 +59,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU5OTk3NDIsImV4cCI6MTYxNjA4NjE0MiwidHlwZSI6IkJlYXJlciIsImp0aSI6ImU2ZWJlMGM0LTFhZTItNDFmMi05NjExLTQ0NmFhODg4NGU5YSIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.O1OBIGlR3co2fVHBfPImWlU83urQXZqoTWZbN9RV8Qt8mUZGWy2XwjzZHk0bXI3xqIOlm4eTXdvgCGsErGAiCzzK9muoeOQ7kmMwPgYlVR4PVo0n3ZmWn2jCEUMiNwgAe41IEA6C_tHv5u8pLFs0oW0jg0FqNYMxZEhMj3pBo_gDqHg3XQu8B6fYFWi44XL0Ite9J8Gzz4uZ1aJFyaES_hpGhAWn9VtWxOspZ7Z729VHYhdGqe1O4SGFlY8bzvLIrH3HoKsqDYCIUZqhEB3s2U0O6aVlqfpKZJmkvN9gqhV_X_TaHWA2QJZ7ZseLirEA8csWXq8OOqknPQia8T85dB5VkAJanSxlsOP8KdwmROvGDcstcHAeWScpnMDoYuYrixefESMykN7XEuf4PSPMkjH3lqGZe0Ufp4i5FiOAD7frOTIyLQ71-wzm57h90vUMytO2uhr4ShPiwtZ3EkPHDuh2SP0J4Pw3_IhE7TjQ2DeYhXoXPU_lMiHtiU78DWRJ27pADkNQyVRJNCdkV3OewNtsYMh5gAkPzVbtjkyP8M5uci63dYrbgESJSDut_z5r8qRxJPSyyd3i5_65aOCer-EXUr-RYwPzt_ihyN8DF8YkJ6q0Y2nwUic2vB4T66pW1wFm6mvE-QbnFQq-fYX7Opa1XtdG4FJVMyNdoGbzQSc" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTYxNzE3MTMsImV4cCI6MTYxNjI1ODExMywidHlwZSI6IkJlYXJlciIsImp0aSI6ImE1YzI1YjIyLWRlOTktNDcxOS1hZWRiLWUxN2UwMDljNWE3YiIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.AnQSmc1JLO2h0BooK9Y1_oPIs4o6qzGjUnLw4thO-lIVoqLlFhql9omFAvtQ3ZiJf3s2GssQDLI3DGW4J0RDuH_jG3NpqnynK1SF3XsGDJTLEz1o_WEoAIFOiDUDoXsf5R4TzUnaeeMLytk8t9WiAdhL5nf4GTi4PbDVsxIPlpHxTHsZi-TqXCdn8-XvmqqnEDPkMfe7prbg2UVGaf1pgRXGeQjISK8oRrt5R6f1swx7nYPSRLGy9uYBxa3wTD5fWTd2ZRHfB963G5yA2Vc7c-g8W0KfOKVOd51ibtiKAf091BBJ9p0YSJ1FdXsUi4-vTPzcEssPqc96j_KyGGlsLj_i8MC7A5Bfo9TT8T_NBhHN79yP3l7hL0MzNcCirDGFkEvbUpVJ4wZvfStUaqe6MLQO2dynUo9NeUDO1fT3Tt0LrxUyKb3MCnqR_eFbofvKi2DzDBsTUzgKXgOqSkRaPVsYy0x5eIVFP2PpdPShDFIK7qNbDkgfMMXSE5ym16_67qrFE4IhBzh67aG7XmleciU1R3IOcv_upLji2xkPo5jAAiuwMjdXwLk0kj6Es2gqhFaLt1VLXtMQOcysZENtEGvEIINvfH5kkp9E8UJ85a7DC4widLDQL0zmmbP73OKHsR-aYUWeQUpEQflqWi3q-f20GJax-bXy5y49ajVnz3Q" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -314,6 +314,7 @@ function App() {
               setWorkOutStartet={setWorkOutStartet}
               achieves={achieves}
               iterChanged={iterChanged}
+              setIterChanged={setIterChanged}
               setAchieves={setAchieves}
               assistant={assistant}
               iter={iter}

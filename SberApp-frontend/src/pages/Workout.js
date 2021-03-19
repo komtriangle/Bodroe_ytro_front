@@ -74,7 +74,8 @@ const Workout = ({
   iter,
   setIter,
   setGroupId,
-  assistantType
+  assistantType,
+  setIterChanged
 }) => {
   const history = useHistory();
 
@@ -118,6 +119,7 @@ const Workout = ({
         setAchieves(ach.data);
       };
       getUserAchieves();
+      assistant.current?.sendData({ action: { action_id: 'train_finish', parameters: {  } } });
     }
     if (iterChanged == 1) { 
         setIter(iter + 1); 
@@ -347,22 +349,7 @@ const Workout = ({
                               //if(workoutExercises[iter+1]!=undefined){
                                 //assistant.current?.sendData({ action: { action_id: 'say', parameters: { "description":workoutExercises[iter+1].discription, "number":iter } } });
                              // }
-                             if (iter+1 == workoutExercises.length) {
-                              const getUserAchieves = async () => {
-                                await ApiQueries.createProgressAchieve(
-                                  userId,
-                                  new Date(),
-                                  true
-                                );
-                                var ach = await ApiQueries.getAchiviesFomUser(
-                                  userId
-                                );
-                                setAchieves(ach.data);
-                              };
-                              getUserAchieves();
-                            }
-
-                              setIter(iter + 1);
+                             setIterChanged(1);
                             }}
                           >
                             Следующее

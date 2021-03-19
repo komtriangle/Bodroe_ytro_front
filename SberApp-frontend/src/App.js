@@ -236,7 +236,7 @@ function App() {
             getData(event.user_id);
             ApiQueries.createUser(userId);
           }
-          if(event.assistant="official"){
+          if(event.assistant=="official"){
             setAssistantType("sber")
           }
           else{

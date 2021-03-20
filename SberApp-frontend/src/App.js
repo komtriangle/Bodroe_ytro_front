@@ -207,11 +207,6 @@ function App() {
           changeExir("previous");
           break;
         case "to_main":
-          const getUserAchieves = async () => {
-            var ach = await ApiQueries.getAchiviesFomUser(userId);
-            setAchieves(ach.data);
-          };
-          getUserAchieves();
           history.push("/");
           break;
         case "update_stat":
@@ -316,6 +311,14 @@ function App() {
       action: { action_id: "chooseCategory", parameters: {} },
     });
   };
+
+  useEffect(() => {
+    const getUserAchieves = async () => {
+      var ach = await ApiQueries.getAchiviesFomUser(userId);
+      setAchieves(ach.data);
+    };
+    getUserAchieves();
+  }, []);
 
   return (
     <AppStyled>

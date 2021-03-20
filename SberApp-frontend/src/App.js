@@ -209,6 +209,13 @@ function App() {
         case "to_main":
           history.push("/");
           break;
+        case "update_stat":
+          const getUserAchieves = async () => {
+            var ach = await ApiQueries.getAchiviesFomUser(userId);
+            setAchieves(ach.data);
+          };
+          getUserAchieves();
+          break;
 
         default:
           break;
@@ -362,6 +369,8 @@ function App() {
               achieves={achieves}
               setName={setName}
               setDescription={setDescription}
+              userId={userId}
+              setAchieves={setAchieves}
             />
           </Route>
         </Switch>

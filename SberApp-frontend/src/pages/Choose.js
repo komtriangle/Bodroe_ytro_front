@@ -85,7 +85,7 @@ const Choose = ({
                       height: "12rem",
                       margin: "0.3rem",
                     }}
-                    scaleOnFocus={true}
+                    scaleOnFocus={false}
                     focused={i == carouselIndex}
                   >
                     <CardBody>

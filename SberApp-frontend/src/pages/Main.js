@@ -4,12 +4,10 @@ import { withRouter, Link } from "react-router-dom";
 import {
   IconCalendar,
   IconAccessibility,
-  IconDone,
   IconApps,
-  IconCross,
-  IconEvent,
-  IconHeart,
+  IconRefresh
 } from "@sberdevices/plasma-icons";
+import ApiQueries from "../ApiQueries";
 import { Headline3 } from "@sberdevices/ui/components/Typography";
 
 import {
@@ -28,7 +26,7 @@ import {
   IconSettings,
 } from "@sberdevices/ui";
 import { tertiary, primary, accent } from "@sberdevices/plasma-tokens";
-const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) => {
+const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, userId,  setAchieves}) => {
   return (
     <div
       style={{
@@ -111,7 +109,23 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription }) 
       </Card>
       <div style={{ flexDirection: "column" }}>
         <br /> <br />
-        <Headline3>Статистика</Headline3>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Headline3 style={{ marginRight: "0.5rem", marginTop: "0.5rem" }}>
+            Статистика
+          </Headline3>
+          <Button
+            size="s"
+            onClick={() => {
+              const getUserAchieves = async () => {
+                var ach = await ApiQueries.getAchiviesFomUser(userId);
+                setAchieves(ach.data);
+              };
+              getUserAchieves();
+            }}
+          >
+            <IconRefresh size="xs" />
+          </Button>
+        </div>
         <MarkedList>
           {/* <div
             style={{

@@ -1,5 +1,5 @@
 import { Button, Container } from "@sberdevices/ui";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { withRouter, Link } from "react-router-dom";
 import {
   IconCalendar,
@@ -27,6 +27,13 @@ import {
 } from "@sberdevices/ui";
 import { tertiary, primary, accent } from "@sberdevices/plasma-tokens";
 const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, userId,  setAchieves}) => {
+  useEffect(() => {
+    const getUserAchieves = async () => {
+      var ach = await ApiQueries.getAchiviesFomUser(userId);
+      setAchieves(ach.data);
+    };
+    getUserAchieves();
+  }, []);
   return (
     <div
       style={{

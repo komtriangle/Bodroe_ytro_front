@@ -229,14 +229,24 @@ function App() {
         if (event.type == "smart_app_data") {
           console.log("userId", event.user_id);
           if (event.sub != undefined) {
-            alert(event.sub)
             setUserId(event.sub);
             getData(event.sub);
+            ApiQueries.createUser(event.sub);
+            const getUserAchieves = async () => {
+              var ach = await ApiQueries.getAchiviesFomUser(event.sub);
+              setAchieves(ach.data);
+            };
+            getUserAchieves();
             ApiQueries.createUser(userId);
           } else if (event.user_id != undefined) {
             setUserId(event.user_id);
             getData(event.user_id);
             ApiQueries.createUser(userId);
+            const getUserAchieves = async () => {
+              var ach = await ApiQueries.getAchiviesFomUser(event.userId);
+              setAchieves(ach.data);
+            };
+            getUserAchieves();
           }
           if(event.assistant=="official"){
             assistantType.current="sber"
@@ -244,11 +254,6 @@ function App() {
           if(event.assistant=="no_official"){
             assistantType.current = "joy"
           }
-          const getUserAchieves = async () => {
-            var ach = await ApiQueries.getAchiviesFomUser(event.user_id);
-            setAchieves(ach.data);
-          };
-          getUserAchieves();
         }
         if (event.type == "character") {
           assistantType.current = event.character.id

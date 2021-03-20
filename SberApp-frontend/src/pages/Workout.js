@@ -110,7 +110,6 @@ const Workout = ({
           new Date(),
           true
         );
-        alert(userId)
         var ach = await ApiQueries.getAchiviesFomUser(
           userId
         );

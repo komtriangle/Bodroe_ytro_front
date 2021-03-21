@@ -210,6 +210,7 @@ function App() {
           changeExir("previous");
           break;
         case "to_main":
+          setIter(-1);
           history.push("/");
           break;
         case "move_left":

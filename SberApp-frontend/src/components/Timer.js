@@ -130,6 +130,7 @@ export const Timer = ({
               onClick={() => {
                 setIsOpen(false);
                 setCounterRest(30);
+                setIter(-1);
                 history.push("/");
               }}
             >

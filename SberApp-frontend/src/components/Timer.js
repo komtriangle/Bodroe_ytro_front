@@ -38,6 +38,7 @@ export const Timer = ({
   workoutLength,
   assistant,
   userId,
+  setWorkOutStartet
 }) => {
   const history = useHistory();
 
@@ -130,8 +131,9 @@ export const Timer = ({
               onClick={() => {
                 setIsOpen(false);
                 setCounterRest(30);
-                setIter(-1);
                 history.push("/");
+                setWorkOutStartet(false);
+                setIter(-1);
               }}
             >
               <IconHouse />

@@ -208,9 +208,10 @@ const Workout = ({
                     <Button
                       onClick={() => {
                         setWorkOutStartet(false);
-                        setIter(-1);
                         setGroupId(2);
                         history.push("/");
+                        setIter(-1);
+                        setWorkOutStartet(false);
                       }}
                     >
                       <IconHouse />
@@ -239,6 +240,7 @@ const Workout = ({
                           setAchieves={setAchieves}
                           workoutExercises={workoutExercises}
                           sayExircise={sayExircise}
+                          setWorkOutStartet={setWorkOutStartet}
                         />
                       </div>
                     </div>

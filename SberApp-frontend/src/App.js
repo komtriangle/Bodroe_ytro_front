@@ -210,8 +210,9 @@ function App() {
           changeExir("previous");
           break;
         case "to_main":
-          setIter(-1);
           history.push("/");
+          setWorkOutStartet(false);
+          setIter(-1);
           break;
         case "move_left":
           alert(carouselIndex)

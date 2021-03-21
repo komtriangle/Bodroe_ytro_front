@@ -11,13 +11,8 @@ import { Headline2 } from "@sberdevices/ui/components/Typography";
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 const format = (time) => {
-  // Convert seconds into minutes and take the whole part
   const minutes = Math.floor(time / 60);
-
-  // Get the seconds left after converting minutes
   const seconds = time % 60;
-
-  //Return combined values as string in format mm:ss
   return `${minutes}:${padTime(seconds)}`;
 };
 const customStyles = {
@@ -35,22 +30,14 @@ const customStyles = {
     padding: "1em",
   },
 };
-// const DocStyles = {`
-//     /* stylelint-disable-next-line selector-nested-pattern */
-//     html {
 
-//     }
-// `;
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 export const Timer = ({
   setIter,
   timeCount,
   iter,
-  userId,
   workoutLength,
-  setAchieves,
-  workoutExercises,
-  sayExircise
+  assistant,
+  userId,
 }) => {
   const history = useHistory();
 
@@ -59,9 +46,7 @@ export const Timer = ({
   function openModal() {
     setIsOpen(true);
   }
-
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = "";
     setCounterRest(30);
   }
@@ -77,21 +62,20 @@ export const Timer = ({
     setCounter(timeCount.timeCount);
   }, [timeCount]);
   React.useEffect(() => {
-    console.log(timeCount);
-    // if(changed){
-
-    // }
-    // else{
-    //   setChanged()
-    // }
-    console.log("Timer useeffect");
-
     let timer;
     if (counter > 0) {
       timer = setTimeout(() => setCounter((c) => c - 1), 1000);
+    } else if (iter + 1 === workoutLength) {
+      const getUserAchieves = async () => {
+        await ApiQueries.createProgressAchieve(userId, new Date(), true);
+      };
+      getUserAchieves();
+      assistant.current?.sendData({
+        action: { action_id: "train_finish", parameters: {} },
+      });
+      setIter(iter + 1);
     } else if (counter === 0) {
       setIsOpen(true);
-
     }
     return () => {
       if (timer) {
@@ -121,7 +105,6 @@ export const Timer = ({
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
-          //onRequestClose={closeModal}
           style={customStyles}
         >
           <h2

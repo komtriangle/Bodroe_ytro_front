@@ -16,6 +16,7 @@ import Main from "./pages/Main";
 import Workout from "./pages/Workout";
 import ApiQueries from "./ApiQueries";
 import Choose from "./pages/Choose";
+import Completion from "./pages/Completion";
 import { useHistory, withRouter } from "react-router-dom";
 import {
   createSmartappDebugger,
@@ -59,7 +60,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTYxNzE3MTMsImV4cCI6MTYxNjI1ODExMywidHlwZSI6IkJlYXJlciIsImp0aSI6ImE1YzI1YjIyLWRlOTktNDcxOS1hZWRiLWUxN2UwMDljNWE3YiIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.AnQSmc1JLO2h0BooK9Y1_oPIs4o6qzGjUnLw4thO-lIVoqLlFhql9omFAvtQ3ZiJf3s2GssQDLI3DGW4J0RDuH_jG3NpqnynK1SF3XsGDJTLEz1o_WEoAIFOiDUDoXsf5R4TzUnaeeMLytk8t9WiAdhL5nf4GTi4PbDVsxIPlpHxTHsZi-TqXCdn8-XvmqqnEDPkMfe7prbg2UVGaf1pgRXGeQjISK8oRrt5R6f1swx7nYPSRLGy9uYBxa3wTD5fWTd2ZRHfB963G5yA2Vc7c-g8W0KfOKVOd51ibtiKAf091BBJ9p0YSJ1FdXsUi4-vTPzcEssPqc96j_KyGGlsLj_i8MC7A5Bfo9TT8T_NBhHN79yP3l7hL0MzNcCirDGFkEvbUpVJ4wZvfStUaqe6MLQO2dynUo9NeUDO1fT3Tt0LrxUyKb3MCnqR_eFbofvKi2DzDBsTUzgKXgOqSkRaPVsYy0x5eIVFP2PpdPShDFIK7qNbDkgfMMXSE5ym16_67qrFE4IhBzh67aG7XmleciU1R3IOcv_upLji2xkPo5jAAiuwMjdXwLk0kj6Es2gqhFaLt1VLXtMQOcysZENtEGvEIINvfH5kkp9E8UJ85a7DC4widLDQL0zmmbP73OKHsR-aYUWeQUpEQflqWi3q-f20GJax-bXy5y49ajVnz3Q" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTYzNTIxOTEsImV4cCI6MTYxNjQzODU5MSwidHlwZSI6IkJlYXJlciIsImp0aSI6ImY2ZDZiNWVmLWJkNzktNDM5Yi04NjJlLWIyYTI0ZDgwZjgzMiIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.ZNO3h--mx32CABXMV9J1PLgdERE3vkxIrxaTiAkEEblsHU02iSU26Rr96G4k_Ttkg_-zfu_tYAE1H1Gf9t2aWtC1Pa8q9thJzny2MC36S6nHOmQRN6-TE7uCCPSH7OJsxLQuWiDTz2Q0njJY8cbln3YBpUzbPi97qK1WcGZq9GE1MsCykg2F_HoceCYUFOFleAnirf3R_qcACbBCa-ne1GFJpR1NT2M5XM5Laur60beL49FN8fKtBd-G-6rfSQ0v8UXxLJ1gpDmmLOgUEHTBLclSpwc_8xtw-cpkOFZ8-1HbAIZ35inL5bk2VKC8N0YFrbEMtIe9yYfHib2Yf8iZNkP4gN6X457i83ZIu31yDfMh7P8uAJqV4ris1GnHxLPw4EGcTyTkhhQT6QHn823WFTbgZbEoNTwx_p5KY8rW7ekEWzZgHAILIr3od9A0VLaalRDTIe2guU3S_acdvnYs1dzRrAgVtg8NAUjr2imhOaM7jzEMcgE9xDZ1p1iYybgPe-SifcO5n5deK5X2xBYvTOoYZz3KWOme4TxpC_JkNaItPKW-q4ifIoBN6bwWtUvd_C2PYmvV7-fPvZ9aqpG3uo0UhXqp7otbOmP77YpENnOGAyQix5LKkIqD84wj307tRJV0XIQUjmWH_glCWB-jojQcRLHKNrRkxJV0dwTGkYc" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -74,6 +75,7 @@ function App() {
   var assistant = useRef();
   var workouts = useRef();
   var assistantType = useRef();
+  var workouts_wxircices_names = useRef();
   var state = {
     notes: [],
   };
@@ -85,6 +87,7 @@ function App() {
   const [workOutStarted, setWorkOutStartet] = useState(false);
   const [iterChanged, setIterChanged] = useState(-1);
   const [digit, setDigit] = useState(-1);
+  const [carouselIndex, setCarouselIndex] = useState(1);
   //const [assistantType, setAssistantType] = useState("");
   const getStateForAssistant = () => {
     console.log("getStateForAssistant: this.state:", state);
@@ -209,6 +212,18 @@ function App() {
         case "to_main":
           history.push("/");
           break;
+        case "move_left":
+          alert(carouselIndex)
+          if(carouselIndex>0){
+           setCarouselIndex(carouselIndex-1)
+          }
+          break;
+        case "move_right":
+          alert(carouselIndex)
+          if(carouselIndex<workouts.current.data.length){
+           setCarouselIndex(carouselIndex+1)
+          }
+          break;
         case "update_stat":
           const getUserAchieves = async () => {
             var ach = await ApiQueries.getAchiviesFomUser(userId);
@@ -312,14 +327,6 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    const getUserAchieves = async () => {
-      var ach = await ApiQueries.getAchiviesFomUser(userId);
-      setAchieves(ach.data);
-    };
-    getUserAchieves();
-  }, []);
-
   return (
     <AppStyled>
       <DocStyles />
@@ -338,18 +345,44 @@ function App() {
       })()}
       {true ? (
         <Switch>
+          <Route path="/Completion">
+            <Completion>
+              workouts_wxircices_names={workouts_wxircices_names}
+              groupId={groupId}
+              description={description}
+              workoutExercises={workoutExercises}
+              setWorkoutExercises={setWorkoutExercises}
+              name={name}
+              userId={userId}
+              workOutStarted={workOutStarted}
+              setWorkOutStartet={setWorkOutStartet}
+              iterChanged={iterChanged}
+              setAchieves={setAchieves}
+              assistant={assistant}
+              iter={iter}
+              setIter={setIter}
+              setGroupId={setGroupId}
+              assistantType={assistantType}
+              history={history}
+            </Completion>
+              
+          </Route>
           <Route path="/choose">
             <Choose
+            carouselIndex={carouselIndex}
               setGroupId={setGroupId}
               setDescription={setDescription}
               setName={setName}
               workouts={workouts}
               SendDataToAssistant={SendDataToAssistant}
               assistant={assistant}
+              carouselIndex={carouselIndex}
+               setCarouselIndex={setCarouselIndex}
             />
           </Route>
           <Route path="/fastworkout">
             <Workout
+              workouts_wxircices_names={workouts_wxircices_names}
               groupId={groupId}
               description={description}
               workoutExercises={workoutExercises}

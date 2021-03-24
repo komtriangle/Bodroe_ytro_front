@@ -60,7 +60,7 @@ const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
     return createSmartappDebugger({
       token:
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTYzNTIxOTEsImV4cCI6MTYxNjQzODU5MSwidHlwZSI6IkJlYXJlciIsImp0aSI6ImY2ZDZiNWVmLWJkNzktNDM5Yi04NjJlLWIyYTI0ZDgwZjgzMiIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.ZNO3h--mx32CABXMV9J1PLgdERE3vkxIrxaTiAkEEblsHU02iSU26Rr96G4k_Ttkg_-zfu_tYAE1H1Gf9t2aWtC1Pa8q9thJzny2MC36S6nHOmQRN6-TE7uCCPSH7OJsxLQuWiDTz2Q0njJY8cbln3YBpUzbPi97qK1WcGZq9GE1MsCykg2F_HoceCYUFOFleAnirf3R_qcACbBCa-ne1GFJpR1NT2M5XM5Laur60beL49FN8fKtBd-G-6rfSQ0v8UXxLJ1gpDmmLOgUEHTBLclSpwc_8xtw-cpkOFZ8-1HbAIZ35inL5bk2VKC8N0YFrbEMtIe9yYfHib2Yf8iZNkP4gN6X457i83ZIu31yDfMh7P8uAJqV4ris1GnHxLPw4EGcTyTkhhQT6QHn823WFTbgZbEoNTwx_p5KY8rW7ekEWzZgHAILIr3od9A0VLaalRDTIe2guU3S_acdvnYs1dzRrAgVtg8NAUjr2imhOaM7jzEMcgE9xDZ1p1iYybgPe-SifcO5n5deK5X2xBYvTOoYZz3KWOme4TxpC_JkNaItPKW-q4ifIoBN6bwWtUvd_C2PYmvV7-fPvZ9aqpG3uo0UhXqp7otbOmP77YpENnOGAyQix5LKkIqD84wj307tRJV0XIQUjmWH_glCWB-jojQcRLHKNrRkxJV0dwTGkYc" ??
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY1MjYzNzEsImV4cCI6MTYxNjYxMjc3MSwidHlwZSI6IkJlYXJlciIsImp0aSI6IjZhZTFmOTZkLTVkMDAtNDY3MS1iMzdmLTBhOTNhMTg4NWZjYSIsInN1YiI6IjdkMTM4N2FhY2RiYjY0ZTMwNTE3ODQ3ZGVhNzgwMDNmMTA4NjE1YmNlZGIzNTlmYjhmNWJiMWVkOGI0OTU3ZmM1MzliZTkyNzAwNDI2Mjk4IiwiYXVkIjoiVlBTIn0.upmvlXy1UoXW0D5pDYmFHsk8BEz0xGpWBfe4jyZZVmU1J257dQ0O3011tMv5Tek7VhCU9nh4WDefZyfcJtx0NKGgakR7ic2RDQZ3Q8w4F-sx4EcB0hhdqpfuPtP9M-xO2b_hRf1JZ66HvcwJ_gS3uw_qk8BNEPrZnYL6RUTlM_2oals4bKYiS6FP21QvyPqrpNRqjiucLtxpZ8mPJnZjKkT9w-0WkJ-THuhT7PgM4s4tWyg52oQFtxh0eGi_yirrYfUEJBiY3TEcl4vWYbj4A1z9me2IhPYFqZXtuUg6uYTSGdN0RAG1YLm9AkE7C8GC8efZPhCRLE4aVS6B9_2pWqkCC2e_wJeby8e0O5wtoNKrYMkXP0qjotP6UkGhIOOZZPOheRjoKyMPxQySBSwAZktz_i_Pp9t1s1PkUhYWawF3EYd2ty0M-mVrWTwwzxcVs8vmlFRin2ZlQ1WL1vX9Kcpoy4fToPLj_NYQKUIEnwwQNb0JUu3-QbgdZnrKI30QXENvEF0RJ4JA1wwi7vjBtRvXXIIysX9i1FyVlEnOq2bMpBBdy5b7r_22EPfUmQjU725MP2Uq5LDfrv2ChLzOaGUnpfCAc_PHRzned5A9hBXRN-c062rikeO4Sbhk74MuHtO6YgC9DW_DO__QueGvUyg4hne8TSTVBUoXbyqmA8U" ??
         "",
       initPhrase: `Запусти Бодрое утро`,
       getState,
@@ -104,11 +104,6 @@ function App() {
     return state_;
   };
 
-  const getData = async (Id) => {
-    await ApiQueries.getProverkaUsersByUserId(Id).then((data) =>
-      setDigit(data.data)
-    );
-  };
 
   const ChangePage = async (page) => {
     switch (page) {
@@ -254,7 +249,6 @@ function App() {
           console.log("userId", event.user_id);
           if (event.sub != undefined) {
             setUserId(event.sub);
-            getData(event.sub);
             ApiQueries.createUser(event.sub);
             const getUserAchieves = async () => {
               var ach = await ApiQueries.getAchiviesFomUser(event.sub);
@@ -264,7 +258,6 @@ function App() {
             ApiQueries.createUser(userId);
           } else if (event.user_id != undefined) {
             setUserId(event.user_id);
-            getData(event.user_id);
             ApiQueries.createUser(userId);
             const getUserAchieves = async () => {
               var ach = await ApiQueries.getAchiviesFomUser(event.userId);
@@ -274,9 +267,11 @@ function App() {
           }
           if(event.assistant=="official"){
             assistantType.current="sber"
+            setCharacter("sber")
           }
           if(event.assistant=="no_official"){
             assistantType.current = "joy"
+            setCharacter("joy")
           }
         }
         if (event.type == "character") {

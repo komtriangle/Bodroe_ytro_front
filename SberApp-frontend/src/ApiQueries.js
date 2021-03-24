@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://lit-escarpment-35334.herokuapp.com/";
+const API_URL = "https://calm-castle-08500.herokuapp.com/";
 async function createSberId(SberId) {
   const { data: newSberId } = await axios.post(`${API_URL}SberId/`, {
     SberId,
@@ -44,14 +44,6 @@ async function getCategoryById(CategoryId) {
   const category = await axios.get(`${API_URL}ExCateg/`, {
     params: {
       Id: CategoryId,
-    },
-  });
-  return category;
-}
-async function getProverkaUsersByUserId(UserId) {
-  const category = await axios.get(`${API_URL}ProverkaUsersByUserId/`, {
-    params: {
-      user_id: UserId,
     },
   });
   return category;
@@ -112,6 +104,5 @@ export default {
   getProgressByUser,
   createProgressAchieve,
   createUser,
-  getProverkaUsersByUserId,
   getAchiviesFomUser,
 };

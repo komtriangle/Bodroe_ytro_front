@@ -106,7 +106,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, us
               content={
                 <TextBox>
                   <TextBoxTitle>Календарь</TextBoxTitle>
-                  <TextBoxSubTitle>Ваш прогресс</TextBoxSubTitle>
+                  <TextBoxSubTitle>Отображение прогресса</TextBoxSubTitle>
                 </TextBox>
               }
               right={<CellDisclosure />}
@@ -146,7 +146,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, us
             style={{ color: primary }}
           >
             {/* <IconEvent size="xs" color={accent} /> */}
-            <Badge text={achieves.dict} size={"l"} view={"secondary"} />
+            <Badge text={achieves.dict ? achieves.dict : 0} size={"l"} view={"secondary"} />
           </MarkedItem>
           {/* </div> */}
 
@@ -156,7 +156,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, us
           >
             {/* <IconDone size="xs" color={accent} /> */}
             <Badge
-              text={achieves.count_days_train}
+              text={achieves.count_days_train ? achieves.count_days_train : 0}
               size={"l"}
               view={"secondary"}
             />
@@ -164,7 +164,7 @@ const Main = ({ setGroupId, ToChooseCateg, achieves, setName, setDescription, us
 
           <MarkedItem text="общее число тренировок" style={{ color: primary }}>
             {/* <IconHeart size="xs" color={accent} /> */}
-            <Badge text={achieves.count_train} size={"l"} view={"secondary"} />
+            <Badge text={achieves.count_train ? achieves.count_train : 0} size={"l"} view={"secondary"} />
           </MarkedItem>
         </MarkedList>
       </div>

@@ -31,18 +31,6 @@ const AppStyled = styled.div`
   ${body1}
 `;
 const TypoScale = createGlobalStyle(sberBox);
-// const DocStyles = createGlobalStyle`
-//     /* stylelint-disable-next-line selector-nested-pattern */
-//     html {
-//         color: ${text};
-//         background-color: ${background};
-//         background-image: ${gradient};
-//         /** необходимо залить градиентом всю подложку */
-//         min-height: 100vh;
-//     }
-// `;
-// const Theme = createGlobalStyle(darkJoy);
-//const assistant=null;
 const ThemeBackgroundEva = createGlobalStyle(darkEva);
 const ThemeBackgroundSber = createGlobalStyle(darkSber);
 const ThemeBackgroundJoy = createGlobalStyle(darkJoy);

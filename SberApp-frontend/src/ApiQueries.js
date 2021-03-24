@@ -10,6 +10,7 @@ async function createSberId(SberId) {
 
 async function createUser(UserId) {
   const { data: newUser } = await axios.post(`${API_URL}User/`, {
+    headers: {'Access-Control-Allow-Origin': '*'},
     UserId: UserId,
     SberId: 0,
     Name: "",

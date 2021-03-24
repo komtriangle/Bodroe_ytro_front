@@ -78,8 +78,6 @@ const Workout = ({
       const getUserAchieves = async () => {
         await ApiQueries.createProgressAchieve(userId, new Date(), true);
       };
-      alert("Achivive")
-      alert(userId)
       getUserAchieves();
       assistant.current?.sendData({
         action: { action_id: "train_finish", parameters: {} },

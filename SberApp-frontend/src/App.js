@@ -198,13 +198,11 @@ function App() {
           setIter(-1);
           break;
         case "move_left":
-          alert(carouselIndex)
           if(carouselIndex>0){
            setCarouselIndex(carouselIndex-1)
           }
           break;
         case "move_right":
-          alert(carouselIndex)
           if(carouselIndex<workouts.current.data.length){
            setCarouselIndex(carouselIndex+1)
           }

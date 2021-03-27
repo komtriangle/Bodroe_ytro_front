@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://bodroe-ytro-2603.herokuapp.com/";
+const API_URL = "https://lit-escarpment-35334.herokuapp.com/";
 async function createSberId(SberId) {
   const { data: newSberId } = await axios.post(`${API_URL}SberId/`, {
     SberId,
